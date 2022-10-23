@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.text.Text?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.text.Font?>
+<HBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="com.example.inventoryapplication.ProductFormController"
+      prefHeight="500.0" prefWidth="1000.0">
+    <padding>
+        <Insets top="20" right="20" bottom="20" left="20" />
+    </padding>
+    <HBox fx:id="productFormContent" spacing="150">
+        <VBox fx:id="productFormLeft" spacing="20">
+            <Text text="Add Product" fx:id="heading" />
+            <Text fx:id="errorMessage" />
+            <GridPane hgap="10" vgap="15">
+                <padding>
+                    <Insets left="20" />
+                </padding>
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="35" />
+                    <ColumnConstraints prefWidth="70" />
+                    <ColumnConstraints prefWidth="35" />
+                    <ColumnConstraints prefWidth="70" />
+                </columnConstraints>
+                <Label GridPane.rowIndex="0" GridPane.columnIndex="0">ID</Label>
+                <TextField fx:id="productId" GridPane.rowIndex="0" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                <Label GridPane.rowIndex="1" GridPane.columnIndex="0">Name</Label>
+                <TextField fx:id="productName" GridPane.rowIndex="1" GridPane.columnIndex="1" GridPane.columnSpan="2" />
+                <Label GridPane.rowIndex="2" GridPane.columnIndex="0">Inv</Label>
+                <TextField GridPane.rowIndex="2" GridPane.columnIndex="1" fx:id="productInv" />
+                <Label GridPane.rowIndex="3" GridPane.columnIndex="0">Price</Label>
+                <TextField GridPane.rowIndex="3" GridPane.columnIndex="1" fx:id="productPrice" />
+                <Label GridPane.rowIndex="4" GridPane.columnIndex="0">Max</Label>
+                <TextField GridPane.rowIndex="4" GridPane.columnIndex="1" fx:id="productMax" />
+                <Label GridPane.rowIndex="4" GridPane.columnIndex="2">Min</Label>
+                <TextField GridPane.rowIndex="4" GridPane.columnIndex="3" fx:id="productMin" />
+            </GridPane>
+        </VBox>
+        <VBox alignment="CENTER_RIGHT" spacing="20">
+            <TextField
+                    fx:id="productFormPartSearch"
+                    promptText="Search by Part ID or Name"
+                    maxWidth="200"
+                    onAction="#doPartSearch"
+            />
+            <TableView fx:id="allPartsTable">
+                <columns>
+                    <TableColumn text="Part ID" fx:id="allPartsIdCol" />
+                    <TableColumn text="Part Name" fx:id="allPartsNameCol" />
+                    <TableColumn text="Inventory Level" fx:id="allPartsInvCol" />
+                    <TableColumn text="Price/Cost per Unit" fx:id="allPartsPriceCol" />
+                </columns>
+            </TableView>
+            <Button fx:id="addPartBtn" onAction="#addPart">Add</Button>
+
+            <TableView fx:id="curPartsTable">
+                <columns>
+                    <TableColumn text="Part ID" fx:id="curPartsIdCol" />
+                    <TableColumn text="Part Name" fx:id="curPartsNameCol" />
+                    <TableColumn text="Inventory Level" fx:id="curPartsInvCol" />
+                    <TableColumn text="Price/Cost per Unit" fx:id="curPartsPriceCol" />
+                </columns>
+            </TableView>
+            <Button onAction="#removePart">Remove Associated Part</Button>
+            <HBox alignment="CENTER_RIGHT" spacing="10">
+                <Button fx:id="saveProductBtn" onAction="#handleSave">Save</Button>
+                <Button fx:id="cancelProductBtn" onAction="#closeForm">Cancel</Button>
+            </HBox>
+        </VBox>
+    </HBox>
+</HBox>

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Text?>
+
+<?import javafx.geometry.Insets?>
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.inventoryapplication.MainController">
+    <padding>
+        <Insets top="20" right="40" bottom="20" left="40" />
+    </padding>
+    <Text fx:id="mainHeading" GridPane.columnIndex="0" GridPane.rowIndex="0" text="Inventory Management System" />
+    <Text fx:id="errorMessage" />
+    <HBox spacing="50">
+        <padding>
+            <Insets top="20" right="20" bottom="20" left="20" />
+        </padding>
+        <VBox fx:id="partContainer" prefWidth="400">
+            <HBox spacing="150">
+                <Text>Parts</Text>
+                <TextField fx:id="partSearch" promptText="Search by Part ID or Name" onAction="#doPartSearch" />
+            </HBox>
+            <TableView fx:id="partsTable">
+                <columns>
+                    <TableColumn text="Part ID" fx:id="partIdCol" />
+                    <TableColumn text="Part Name" fx:id="partNameCol" />
+                    <TableColumn text="Inventory Level" fx:id="partInvCol" />
+                    <TableColumn text="Price/Cost per Unit" fx:id="partCostCol" />
+                </columns>
+            </TableView>
+            <HBox spacing="15" alignment="CENTER_RIGHT">
+                <padding>
+                    <Insets top="10" />
+                </padding>
+                <Button onAction="#openAddPartForm">Add</Button>
+                <Button onAction="#openModifyPartForm">Modify</Button>
+                <Button onAction="#deletePart">Delete</Button>
+            </HBox>
+        </VBox>
+
+        <VBox fx:id="productContainer" prefWidth="400">
+            <HBox spacing="130">
+                <Text>Products</Text>
+                <TextField fx:id="productSearch" promptText="Search by Product ID or Name" onAction="#doProductSearch" />
+            </HBox>
+            <TableView fx:id="productsTable">
+                <columns>
+                    <TableColumn text="Product ID" fx:id="productIdCol" />
+                    <TableColumn text="Product Name" fx:id="productNameCol" />
+                    <TableColumn text="Inventory Level" fx:id="productInvCol" />
+                    <TableColumn text="Price/Cost per Unit" fx:id="productCostCol" />
+                </columns>
+            </TableView>
+            <HBox spacing="15" alignment="CENTER_RIGHT">
+                <padding>
+                    <Insets top="10" />
+                </padding>
+                <Button onAction="#openAddProductForm">Add</Button>
+                <Button onAction="#openModifyProductForm">Modify</Button>
+                <Button onAction="#deleteProduct">Delete</Button>
+            </HBox>
+        </VBox>
+    </HBox>
+    <HBox alignment="CENTER_RIGHT">
+        <padding>
+            <Insets right="100" />
+        </padding>
+        <Button onAction="#closeApplication">Exit</Button>
+    </HBox>
+</VBox>
